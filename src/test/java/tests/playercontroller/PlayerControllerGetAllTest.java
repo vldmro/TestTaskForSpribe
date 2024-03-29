@@ -7,7 +7,6 @@ import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import tests.basetest.BaseTest;
-import tests.preconditions.PlayerCreatePrecondition;
 
 @Slf4j
 public class PlayerControllerGetAllTest extends BaseTest {

@@ -25,7 +25,7 @@ public class PlayerControllerCreateTest extends BaseTest {
 
         log.info("Step 2: Send a request to create a user. Assert that status code is OK and the right player was created");
         var playerResponse = PlayerControllerApi.createPlayer(player, RequiredConstants.EDITOR_SUPERVISOR);
-        Assert.assertEquals(playerResponse.getStatusCode(), HttpStatus.SC_OK);
+        Assert.assertEquals(playerResponse.getStatusCode(), HttpStatus.SC_OK, "Status codes are not equal.");
         var playerResponseRequestModel = playerResponse.getBody().as(PlayerModel.class);
         Assert.assertNotNull(playerResponseRequestModel.getLogin(), "The login from the response is null.");
         Assert.assertNotNull(playerResponseRequestModel.getRole(), "The role from the response is null.");
@@ -50,7 +50,7 @@ public class PlayerControllerCreateTest extends BaseTest {
 
         log.info("Step 2: Send a request to create a user. Assert that status code is OK and the right player was created");
         var playerResponse = PlayerControllerApi.createPlayer(player, playerAdmin.getLogin());
-        Assert.assertEquals(playerResponse.getStatusCode(), HttpStatus.SC_OK);
+        Assert.assertEquals(playerResponse.getStatusCode(), HttpStatus.SC_OK, "Status codes are not equal.");
         var playerResponseRequestModel = playerResponse.getBody().as(PlayerModel.class);
         Assert.assertNotNull(playerResponseRequestModel.getLogin(), "The login from the response is null.");
         Assert.assertNotNull(playerResponseRequestModel.getRole(), "The role from the response is null.");
@@ -75,7 +75,7 @@ public class PlayerControllerCreateTest extends BaseTest {
 
         log.info("Step 2: Send a request to create a user. Assert that status code is FORBIDDEN and the player was not created");
         var playerResponse = PlayerControllerApi.createPlayer(player, playerUser.getLogin());
-        Assert.assertEquals(playerResponse.getStatusCode(), HttpStatus.SC_FORBIDDEN);
+        Assert.assertEquals(playerResponse.getStatusCode(), HttpStatus.SC_FORBIDDEN, "Status codes are not equal.");
         var playersListAfterCreate = PlayerControllerApi.getAllPlayers().getBody().as(PlayerListModel.class);
         Assert.assertTrue(playersListBeforeCreate.getPlayers().size() == playersListAfterCreate.getPlayers().size(),
                 "Lists are not equal.");

@@ -42,6 +42,6 @@ public class PlayerControllerApi {
     }
 
     private static HashMap<String, Object> getRequestMap(){
-        return new HashMap<String, Object>();
+        return new HashMap<>();
     }
 }
